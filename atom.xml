@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Crorylove</title>
+  <title>飞翔的城堡</title>
   
   <subtitle>At the bottom of the well, it is destined to see only the sky at the wellhead. However, the starting point only affects the process of reaching your peak and does not determine the height you reach.</subtitle>
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-04-14T06:59:52.657Z</updated>
+  <updated>2021-04-16T08:34:23.970Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,22 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2021/04/14/hello-world/"/>
-    <id>http://example.com/2021/04/14/hello-world/</id>
-    <published>2021-04-14T06:59:52.656Z</published>
-    <updated>2021-04-14T06:59:52.657Z</updated>
+    <title>站点配置</title>
+    <link href="http://example.com/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/"/>
+    <id>http://example.com/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/</id>
+    <published>2021-04-16T07:45:52.000Z</published>
+    <updated>2021-04-16T08:34:23.970Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p><strong>准备</strong>；</p><p>这里是之前<a href="https://www.zhihu.com/question/40754267/answer/1393272900?utm_source=qq&utm_medium=social&utm_oi=723920431555305472">准备工作链接</a></p><p>下载好<code>node.js</code></p><p>安装好<code>hexo</code></p><p>启用阿里镜像</p><p>注册安装<code>git/github</code></p><p><strong>github完成对电脑的密匙配对（注意：准备里的大佬不会跟萌新说这个，但是很重要）</strong></p><p>修改好配置文件：网点信息（注意：准备工作工作链接里的链接）</p><h1 id="一、图片路径自动完善"><a href="#一、图片路径自动完善" class="headerlink" title="一、图片路径自动完善"></a>一、图片路径自动完善</h1><h2 id="1-1就按下面的命令安装插件和Typora设置就行"><a href="#1-1就按下面的命令安装插件和Typora设置就行" class="headerlink" title="1.1就按下面的命令安装插件和Typora设置就行"></a>1.1就按下面的命令安装插件和Typora设置就行</h2><p><a href="https://zhuanlan.zhihu.com/p/280758822?utm_source=qq&utm_medium=social&utm_oi=723920431555305472">插入图片路径原理</a></p><h2 id="1-2安装两个插件"><a href="#1-2安装两个插件" class="headerlink" title="1.2安装两个插件"></a>1.2安装两个插件</h2><p>下面的第一个插件是偶然间发现，有用先安装上</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-renderer-marked</span><br><span class="line">cnpm install hexo-image-link --save</span><br></pre></td></tr></table></figure><h3 id="2-1-2Typora偏好设置如下"><a href="#2-1-2Typora偏好设置如下" class="headerlink" title="2.1.2Typora偏好设置如下"></a>2.1.2Typora偏好设置如下</h3><img src="/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/image-20210412122237335.png" class="" title="image-20210412122237335"><h1 id="二、查看和部署"><a href="#二、查看和部署" class="headerlink" title="二、查看和部署"></a>二、查看和部署</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure><p>插件安装完后执行以下指令，查看效果：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>部署到github需要插件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+    <summary type="html">&lt;p&gt;&lt;strong&gt;准备&lt;/strong&gt;；&lt;/p&gt;
+&lt;p&gt;这里是之前&lt;a href=&quot;https://www.zhihu.com/question/40754267/answer/1393272900?utm_source=qq&amp;utm_medium=social&amp;utm_o</summary>
       
     
     
     
+    <category term="站点" scheme="http://example.com/categories/%E7%AB%99%E7%82%B9/"/>
+    
+    
+    <category term="hexo" scheme="http://example.com/tags/hexo/"/>
     
   </entry>
   

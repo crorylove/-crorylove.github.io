@@ -3,8 +3,8 @@
     <head>
   <!-- 元数据 -->
   <meta charset="utf-8">
-  <link rel="icon" href="/images/avatar.webp">
-  <title>好伙伴们 | Crorylove</title>
+  <link rel="icon" href="">
+  <title>好伙伴们 | 飞翔的城堡</title>
   <meta name="author" content="Crorylove" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -19,13 +19,13 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="好伙伴们">
 <meta property="og:url" content="http://example.com/friends/index.html">
-<meta property="og:site_name" content="Crorylove">
+<meta property="og:site_name" content="飞翔的城堡">
 <meta property="og:description" content="好伙伴们在哪里~">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/avatar.webp">
+<meta property="og:image" content="http://example.com/null">
 <meta property="article:author" content="Crorylove">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/avatar.webp">
+<meta name="twitter:image" content="http://example.com/null">
 <meta name="twitter:site" content="@null">
   
   <!-- 站点验证相关 -->
@@ -57,7 +57,7 @@
   
     <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
   
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Crorylove" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="飞翔的城堡" type="application/atom+xml">
 </head>
 
 
@@ -65,11 +65,9 @@
         <div id="kratos-wrapper">
     <div id="kratos-page">
         <div id="kratos-header">
-            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
-            <header id="kratos-header-section">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
                 <div class="container">
                     <div class="nav-header">
-                        <div class="color-logo"><a href="/">Crorylove</a></div>
                         <nav id="kratos-menu-wrap">
                             <ul id="kratos-primary-menu" class="sf-menu">
                                 
@@ -82,6 +80,10 @@
                                     
                                 
                                     
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
                                         <li>
                                             <a><i class="fa fa-link"></i>链接</a>
                                             <ul class="sub-menu">
@@ -89,11 +91,11 @@
                                                     
                                                 
                                                     
-                                                        <li><a href="/null">作者博客（开发者）</a></li>
+                                                        <li><a target="_blank" rel="noopener" href="https://candinya.com">作者博客</a></li>
                                                     
                                                 
                                                     
-                                                        <li><a href="/null">开发中</a></li>
+                                                        <li><a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">项目链接</a></li>
                                                     
                                                 
                                             </ul>
@@ -105,13 +107,23 @@
                     </div>
                 </div>
             </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">飞翔的城堡</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
         </div>
         <div class="kratos-start kratos-hero-2">
             <!-- <div class="kratos-overlay"></div> -->
             <div class="kratos-cover kratos-cover-2 text-center">
                 <div class="desc desc2 animate-box">
                     <a href="/">
-                        <h2>Crorylove</h2> <br />
+                        <h2>飞翔的城堡</h2> <br />
                         <span>At the bottom of the well, it is destined to see only the sky at the wellhead. However, the starting point only affects the process of reaching your peak and does not determine the height you reach.</span>
                     </a>
                 </div>
@@ -134,7 +146,7 @@
 
 <script type="text/javascript">
 {
-    const flist = JSON.parse(`[{"name":"猫猫①号","bio":"喵~","avatar":"/images/avatar.png","link":"#"},{"name":"猫猫②号","bio":"喵喵~","avatar":"/images/avatar.png","link":"#"},{"name":"猫猫⑨号","bio":"咪啪~","avatar":"/images/avatar.png","link":"#"}]`);
+    const flist = JSON.parse(`[{"name":"猫猫①号","bio":"喵~","avatar":"../images/avatar.webp","link":"#"},{"name":"猫猫②号","bio":"喵喵~","avatar":"../images/avatar.webp","link":"#"},{"name":"猫猫⑨号","bio":"咪啪~","avatar":"../images/avatar.webp","link":"#"}]`);
     let friendNodes = '';
     while (flist.length > 0) {
         const rndNum = Math.floor(Math.random()*flist.length);
@@ -179,9 +191,21 @@
 </aside>
             
                 
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E7%82%B9/">站点</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
 
             
                 
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a>
+      </div>
+  </aside>
+
             
                 
   <aside id="krw-posts" class="widget widget-kratos-posts">
@@ -192,7 +216,7 @@
         
           
           
-            <a class="list-group-item" href="/2021/04/14/hello-world/"><i class="fa  fa-book"></i> Hello World</a>
+            <a class="list-group-item" href="/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/"><i class="fa  fa-book"></i> 站点配置</a>
             
           
         
@@ -245,7 +269,7 @@
                     </ul>
                     <ul class="kratos-copyright">
                         <div>
-                            <li>&copy; 2021 Crorylove 版权所有.</li>
+                            <li>&copy; 2021 飞翔的城堡 版权所有.</li>
                             <li>本站已运行<span id="span_dt">Loading...</span></li>
                         </div>
 						<!--
@@ -253,12 +277,11 @@
                             <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
                             <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Crorylove.</li>
                         </div>
-						
                         <div>
                             <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
-                            
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
                         </div>
-						-->
+							-->
                         <div>
                             
                             
@@ -305,6 +328,10 @@
 
 
     <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
 
 
     </body>
