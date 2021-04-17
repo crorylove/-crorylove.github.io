@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>站点配置 | 飞翔的城堡</title>
+  <title>ServletContext | 飞翔的城堡</title>
   <meta name="author" content="Crorylove" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -13,20 +13,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="hexo" />
+    <meta name="keywords" content="Servlet" />
   
-  <meta name="description" content="准备； 这里是之前准备工作链接 下载好node.js 安装好hexo 启用阿里镜像 注册安装git&#x2F;github github完成对电脑的密匙配对（注意：准备里的大佬不会跟萌新说这个，但是很重要） 修改好配置文件：网点信息（注意：准备工作工作链接里的链接） 一、图片路径自动完善1.1就按下面的命令安装插件和Typora设置就行插入图片路径原理 1.2安装两个插件下面的第一个插件是偶然间发现，有用先">
+  <meta name="description" content="1、ServletContext是什么  2、作用  3、操作流程 创建一个新的sservlet_Context包，创建servlet_Context类    1234567891011    @Override    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletExcep">
 <meta property="og:type" content="article">
-<meta property="og:title" content="站点配置">
-<meta property="og:url" content="http://crorylove.com/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="ServletContext">
+<meta property="og:url" content="http://crorylove.com/2021/04/12/2021-04-12-ServletContext/index.html">
 <meta property="og:site_name" content="飞翔的城堡">
-<meta property="og:description" content="准备； 这里是之前准备工作链接 下载好node.js 安装好hexo 启用阿里镜像 注册安装git&#x2F;github github完成对电脑的密匙配对（注意：准备里的大佬不会跟萌新说这个，但是很重要） 修改好配置文件：网点信息（注意：准备工作工作链接里的链接） 一、图片路径自动完善1.1就按下面的命令安装插件和Typora设置就行插入图片路径原理 1.2安装两个插件下面的第一个插件是偶然间发现，有用先">
+<meta property="og:description" content="1、ServletContext是什么  2、作用  3、操作流程 创建一个新的sservlet_Context包，创建servlet_Context类    1234567891011    @Override    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletExcep">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://crorylove.com/null">
-<meta property="article:published_time" content="2021-04-16T07:45:52.000Z">
-<meta property="article:modified_time" content="2021-04-17T03:05:50.178Z">
+<meta property="article:published_time" content="2021-04-12T11:10:35.000Z">
+<meta property="article:modified_time" content="2021-04-17T03:08:00.364Z">
 <meta property="article:author" content="Crorylove">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="Servlet">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://crorylove.com/null">
 <meta name="twitter:site" content="@null">
@@ -142,23 +142,21 @@
     <article>
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
-                <h1 class="kratos-entry-title text-center">站点配置</h1>
-                
-                    <h2 class="text-center">A succinct hexo theme.</h2>
+                <h1 class="kratos-entry-title text-center">ServletContext</h1>
                 
                 <ul class="kratos-post-meta text-center">
-                    <li><i class="fa fa-calendar"></i> 2021-04-16</li>
+                    <li><i class="fa fa-calendar"></i> 2021-04-12</li>
                     <li><i class="fa fa-user"></i> 作者 Crorylove</li>
                     <li>
                         <i class="fa fa-edit"></i> 
                         
                         
-                            420
+                            1328
                         
                         字
                     </li>
                     
-                        <li id="/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/" class="leancloud_visitors" data-flag-title="站点配置">
+                        <li id="/2021/04/12/2021-04-12-ServletContext/" class="leancloud_visitors" data-flag-title="ServletContext">
                             <i class="fa fa-eye"></i>
                             <span class="leancloud-visitors-count"> </span> 次阅读
                         </li>
@@ -168,40 +166,49 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后编辑于 <time datetime="1618628750178"></time> 前，其中的内容可能需要更新。
+                    本文最后编辑于 <time datetime="1618628880364"></time> 前，其中的内容可能需要更新。
                 </div>
                 
                     <div class="kratos-post-inner-toc">
-                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E8%87%AA%E5%8A%A8%E5%AE%8C%E5%96%84"><span class="toc-number">1.</span> <span class="toc-text">一、图片路径自动完善</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E5%B0%B1%E6%8C%89%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6%E5%92%8CTypora%E8%AE%BE%E7%BD%AE%E5%B0%B1%E8%A1%8C"><span class="toc-number">1.1.</span> <span class="toc-text">1.1就按下面的命令安装插件和Typora设置就行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E5%AE%89%E8%A3%85%E4%B8%A4%E4%B8%AA%E6%8F%92%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">1.2安装两个插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2Typora%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE%E5%A6%82%E4%B8%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1.2Typora偏好设置如下</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9F%A5%E7%9C%8B%E5%92%8C%E9%83%A8%E7%BD%B2"><span class="toc-number">2.</span> <span class="toc-text">二、查看和部署</span></a></li></ol>
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81ServletContext%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">1、ServletContext是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E4%BD%9C%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">2、作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">3、操作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E5%83%8Fmap%E4%B8%80%E9%A1%B9%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="toc-number">4.</span> <span class="toc-text">4、像map一项存储数据</span></a></li></ol>
                     </div>
                 
                 <hr />
-                <p><strong>准备</strong>；</p>
-<p>这里是之前<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/40754267/answer/1393272900?utm_source=qq&utm_medium=social&utm_oi=723920431555305472">准备工作链接</a></p>
-<p>下载好<code>node.js</code></p>
-<p>安装好<code>hexo</code></p>
-<p>启用阿里镜像</p>
-<p>注册安装<code>git/github</code></p>
-<p><strong>github完成对电脑的密匙配对（注意：准备里的大佬不会跟萌新说这个，但是很重要）</strong></p>
-<p>修改好配置文件：网点信息（注意：准备工作工作链接里的链接）</p>
-<h1 id="一、图片路径自动完善"><a href="#一、图片路径自动完善" class="headerlink" title="一、图片路径自动完善"></a>一、图片路径自动完善</h1><h2 id="1-1就按下面的命令安装插件和Typora设置就行"><a href="#1-1就按下面的命令安装插件和Typora设置就行" class="headerlink" title="1.1就按下面的命令安装插件和Typora设置就行"></a>1.1就按下面的命令安装插件和Typora设置就行</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/280758822?utm_source=qq&utm_medium=social&utm_oi=723920431555305472">插入图片路径原理</a></p>
-<h2 id="1-2安装两个插件"><a href="#1-2安装两个插件" class="headerlink" title="1.2安装两个插件"></a>1.2安装两个插件</h2><p>下面的第一个插件是偶然间发现，有用先安装上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-renderer-marked</span><br><span class="line">cnpm install hexo-image-link --save</span><br></pre></td></tr></table></figure>
+                <h1 id="1、ServletContext是什么"><a href="#1、ServletContext是什么" class="headerlink" title="1、ServletContext是什么"></a>1、ServletContext是什么</h1><img src="/2021/04/12/2021-04-12-ServletContext/image-20210410074817747.png" class="">
 
-<h3 id="2-1-2Typora偏好设置如下"><a href="#2-1-2Typora偏好设置如下" class="headerlink" title="2.1.2Typora偏好设置如下"></a>2.1.2Typora偏好设置如下</h3><img src="/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/image-20210412122237335.png" class="" title="image-20210412122237335">
+<h1 id="2、作用"><a href="#2、作用" class="headerlink" title="2、作用"></a>2、作用</h1><img src="/2021/04/12/2021-04-12-ServletContext/image-20210410103337086.png" class="" title="image-20210410103337086">
 
+<h1 id="3、操作流程"><a href="#3、操作流程" class="headerlink" title="3、操作流程"></a>3、操作流程</h1><ul>
+<li>创建一个新的<code>sservlet_Context</code>包，创建<code>servlet_Context</code>类</li>
+</ul>
+<img src="/2021/04/12/2021-04-12-ServletContext/image-20210410094201394.png" class="" title="image-20210410094201394">
 
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//            获取在web.xml中配置的上下文参数context-param</span></span><br><span class="line">        ServletContext context = getServletConfig().getServletContext();</span><br><span class="line">        String usename= context.getInitParameter(<span class="string">&quot;namespace&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;namespace的值是&quot;</span> + usename);</span><br><span class="line">        System.out.println(<span class="string">&quot;password的值是&quot;</span> + context.getInitParameter(<span class="string">&quot;password&quot;</span>));</span><br><span class="line"><span class="comment">//        获取当前工程路径你</span></span><br><span class="line">        System.out.println(<span class="string">&quot;当前工程路径是&quot;</span> + context.getContextPath());</span><br><span class="line"><span class="comment">//        获取工程部署在服务器磁盘上的绝对路径</span></span><br><span class="line">        System.out.println(<span class="string">&quot;工程部署的路经是&quot;</span> + context.getRealPath(<span class="string">&quot;/&quot;</span>));</span><br></pre></td></tr></table></figure>
 
-<h1 id="二、查看和部署"><a href="#二、查看和部署" class="headerlink" title="二、查看和部署"></a>二、查看和部署</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上下文参数在<code>web.xml</code>中添加在开头，结尾不知道行不行</li>
+</ul>
+<img src="/2021/04/12/2021-04-12-ServletContext/image-20210410094433451.png" class="" title="image-20210410094433451">
 
-<p>插件安装完后执行以下指令，查看效果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    它属于整个web工程--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>namespace<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>context<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>password<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>部署到github需要插件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<h1 id="4、像map一项存储数据"><a href="#4、像map一项存储数据" class="headerlink" title="4、像map一项存储数据"></a>4、像map一项存储数据</h1><ul>
+<li><p><code>COntext</code>是在工程部署时开始创建，工程结束时关闭</p>
+</li>
+<li><p><code>Context</code>储存的值(<em>数据</em>)放入是整个web工程共用</p>
+<img src="/2021/04/12/2021-04-12-ServletContext/image-20210408215009303.png" class="" title="image-20210408215009303"></li>
+</ul>
+<img src="/2021/04/12/2021-04-12-ServletContext/image-20210410103700432.png" class="" title="image-20210410103700432">
 
+<img src="/2021/04/12/2021-04-12-ServletContext/image-20210410103835658.png" class="" title="image-20210410103835658">
 
-
+<ul>
+<li><p>运行，先运行·<code>Context_Map02</code>,再运行<code>Context_Map</code>，</p>
+</li>
+<li><img src="/2021/04/12/2021-04-12-ServletContext/image-20210410104418903.png" class="" title="image-20210410104418903"></li>
+<li><p>接着运行<code>Context_Map</code>,接着运行<code>Context_Map02</code></p>
+<img src="/2021/04/12/2021-04-12-ServletContext/image-20210410104446107.png" class="" title="image-20210410104446107"></li>
+</ul>
 
             </div>
             
@@ -255,7 +262,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "http://crorylove.com/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/",
+                text: "http://crorylove.com/2021/04/12/2021-04-12-ServletContext/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -267,16 +274,18 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "http://crorylove.com/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/";
-            const title         = "「站点配置」";
-            const excerpt       = `准备；
-这里是之前准备工作链接
-下载好node.js
-安装好hexo
-启用阿里镜像
-注册安装git/github
-github完成对电脑的密匙配对（注意：准备里的大佬不会跟萌新说这个，但是很重要）
-修改好配置文件：网点信息（注意：准备...`;
+            const hostUrl       = "http://crorylove.com/2021/04/12/2021-04-12-ServletContext/";
+            const title         = "「ServletContext」";
+            const excerpt       = `1、ServletContext是什么
+
+2、作用
+
+3、操作流程
+创建一个新的sservlet_Context包，创建servlet_Context类
+
+
+
+1234567891011    @Override    protect...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -295,7 +304,7 @@ github完成对电脑的密匙配对（注意：准备里的大佬不会跟萌�
                 <div class="footer-tag clearfix">
                     <div class="pull-left">
                     <i class="fa fa-tags"></i>
-                        <a class="tag-none-link" href="/tags/hexo/" rel="tag">hexo</a>
+                        <a class="tag-none-link" href="/tags/Servlet/" rel="tag">Servlet</a>
                     </div>
                     <div class="pull-date">
                     <span>最后编辑：2021-04-17</span>
@@ -307,9 +316,13 @@ github完成对电脑的密匙配对（注意：准备里的大佬不会跟萌�
             <nav class="navigation post-navigation clearfix" role="navigation">
                 
                 <div class="nav-previous clearfix">
-                    <a title=" maven_idea版配置" href="/2021/04/12/2021-04-12-maven-idea版配置/">&lt; 上一篇</a>
+                    <a title=" Servlet_Config" href="/2021/04/12/2021-04-12-Servlet-Config/">&lt; 上一篇</a>
                 </div>
                 
+                
+                <div class="nav-next clearfix">
+                    <a title=" Tomcat简单入手" href="/2021/04/12/2021-04-12-Tomcat简单入手/">下一篇 &gt;</a>
+                </div>
                 
             </nav>
         
@@ -324,7 +337,7 @@ github完成对电脑的密匙配对（注意：准备里的大佬不会跟萌�
                 appKey: 'mFuB5oTAPDnE6xrRsQWG5ULQ',
                 visitor: true,
                 enableQQ: true,
-                path: '/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/'
+                path: '/2021/04/12/2021-04-12-ServletContext/'
             });
         }
         if (typeof Valine == 'undefined') {
@@ -370,7 +383,7 @@ github完成对电脑的密匙配对（注意：准备里的大佬不会跟萌�
         <span class="toc-progress-bar"></span>
     </h4>
     <div class="textwidget">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E8%87%AA%E5%8A%A8%E5%AE%8C%E5%96%84"><span class="toc-text">一、图片路径自动完善</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E5%B0%B1%E6%8C%89%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6%E5%92%8CTypora%E8%AE%BE%E7%BD%AE%E5%B0%B1%E8%A1%8C"><span class="toc-text">1.1就按下面的命令安装插件和Typora设置就行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E5%AE%89%E8%A3%85%E4%B8%A4%E4%B8%AA%E6%8F%92%E4%BB%B6"><span class="toc-text">1.2安装两个插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2Typora%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE%E5%A6%82%E4%B8%8B"><span class="toc-text">2.1.2Typora偏好设置如下</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9F%A5%E7%9C%8B%E5%92%8C%E9%83%A8%E7%BD%B2"><span class="toc-text">二、查看和部署</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81ServletContext%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">1、ServletContext是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E4%BD%9C%E7%94%A8"><span class="toc-text">2、作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">3、操作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E5%83%8Fmap%E4%B8%80%E9%A1%B9%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="toc-text">4、像map一项存储数据</span></a></li></ol>
     </div>
 </aside>
                 

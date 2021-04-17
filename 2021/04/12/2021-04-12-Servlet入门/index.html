@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>Servlet入门 | 飞翔的城堡</title>
+  <meta name="author" content="Crorylove" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="Servlet" />
+  
+  <meta name="description" content="Servlet极简入门[TOC] HelloServlet主流配置选择：稳定，使用最广泛   必要配置 以idea 2019.3为例 第一步 创建工程  创建一个空的project  配置好maven配置    选择自动导入（依赖还是啥的）  再在这个project下创建javaweb的maven    完成后是这样的，没有报红   第二步 配置好javaweb_maven的依赖  导入在poom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet入门">
+<meta property="og:url" content="http://crorylove.com/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="飞翔的城堡">
+<meta property="og:description" content="Servlet极简入门[TOC] HelloServlet主流配置选择：稳定，使用最广泛   必要配置 以idea 2019.3为例 第一步 创建工程  创建一个空的project  配置好maven配置    选择自动导入（依赖还是啥的）  再在这个project下创建javaweb的maven    完成后是这样的，没有报红   第二步 配置好javaweb_maven的依赖  导入在poom">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://crorylove.com/null">
+<meta property="article:published_time" content="2021-04-12T11:03:26.000Z">
+<meta property="article:modified_time" content="2021-04-17T03:07:55.965Z">
+<meta property="article:author" content="Crorylove">
+<meta property="article:tag" content="Servlet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://crorylove.com/null">
+<meta name="twitter:site" content="@null">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="飞翔的城堡" type="application/atom+xml">
+</head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-link"></i>链接</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://candinya.com">作者博客</a></li>
+                                                    
+                                                
+                                                    
+                                                        <li><a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">项目链接</a></li>
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">飞翔的城堡</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>飞翔的城堡</h2> <br />
+                        <span>At the bottom of the well, it is destined to see only the sky at the wellhead. However, the starting point only affects the process of reaching your peak and does not determine the height you reach.</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">Servlet入门</h1>
+                
+                    <h2 class="text-center">Servlet极简入门</h2>
+                
+                <ul class="kratos-post-meta text-center">
+                    <li><i class="fa fa-calendar"></i> 2021-04-12</li>
+                    <li><i class="fa fa-user"></i> 作者 Crorylove</li>
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~3.83K
+                        
+                        字
+                    </li>
+                    
+                        <li id="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/" class="leancloud_visitors" data-flag-title="Servlet入门">
+                            <i class="fa fa-eye"></i>
+                            <span class="leancloud-visitors-count"> </span> 次阅读
+                        </li>
+                        
+                    
+                </ul>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后编辑于 <time datetime="1618628875965"></time> 前，其中的内容可能需要更新。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Servlet%E6%9E%81%E7%AE%80%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Servlet极简入门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HelloServlet"><span class="toc-number">2.</span> <span class="toc-text">HelloServlet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81servlet%E5%8E%9F%E7%90%86%E4%B8%80%E5%9B%BE%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text">1、servlet原理一图流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81servlet%E7%9A%84%E6%98%A0%E5%B0%84%E5%8E%9F%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">3、servlet的映射原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">5.</span> <span class="toc-text">4、生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="toc-number">6.</span> <span class="toc-text">5、使用指南</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6%E3%80%81doGet%E5%92%8CdoPost"><span class="toc-number">7.</span> <span class="toc-text">6、doGet和doPost</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7%E3%80%81ServletConfig"><span class="toc-number">8.</span> <span class="toc-text">7、ServletConfig</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8%E3%80%81%E5%85%B6%E4%BB%96"><span class="toc-number">9.</span> <span class="toc-text">8、其他</span></a></li></ol>
+                    </div>
+                
+                <hr />
+                <h1 id="Servlet极简入门"><a href="#Servlet极简入门" class="headerlink" title="Servlet极简入门"></a>Servlet极简入门</h1><p>[TOC]</p>
+<h1 id="HelloServlet"><a href="#HelloServlet" class="headerlink" title="HelloServlet"></a>HelloServlet</h1><p>主流配置选择：稳定，使用最广泛</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210408134125881.png" class="" title="image-20210408134125881">
+
+<p><strong>必要配置</strong></p>
+<p>以idea 2019.3为例</p>
+<p>第一步 创建工程</p>
+<ul>
+<li><p>创建一个空的project</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409182605398.png" class="" title="image-20210409182605398"></li>
+<li><p>配置好maven配置</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409184259301.png" class="" title="image-20210409184259301">
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409184523066.png" class=""></li>
+<li><p>选择自动导入（依赖还是啥的）</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409184722031.png" class="" title="image-20210409184722031"></li>
+<li><p>再在这个project下创建javaweb的maven</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409182719645.png" class="" title="image-20210409182719645">
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409183820989.png" class="" title="image-20210409183820989"></li>
+<li><p>完成后是这样的，没有报红</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409185138207.png" class="" title="image-20210409185138207"></li>
+</ul>
+<p>第二步 配置好javaweb_maven的依赖</p>
+<ul>
+<li>导入在<code>poom.xml</code><em>(注释：maven配置文件</em> )文件中<code>&lt;dependencies&gt;</code>标签中加入以下maven依赖</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet.jsp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet.jsp-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409185618097.png" class="" title="image-20210409185618097">
+
+<p>修改webapp中的依赖为<code>tomcat\webapps\WEB-INF\web.xml</code>中的版本信息</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">         Licensed to the Apache Software Foundation (ASF) under one or more</span></span><br><span class="line"><span class="comment">          contributor license agreements.  See the NOTICE file distributed with</span></span><br><span class="line"><span class="comment">          this work for additional information regarding copyright ownership.</span></span><br><span class="line"><span class="comment">          The ASF licenses this file to You under the Apache License, Version 2.0</span></span><br><span class="line"><span class="comment">          (the &quot;License&quot;); you may not use this file except in compliance with</span></span><br><span class="line"><span class="comment">          the License.  You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">              http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">          Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment">          distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></span><br><span class="line"><span class="comment">          WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment">          See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment">          limitations under the License.</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee</span></span></span><br><span class="line"><span class="tag"><span class="string">                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">version</span>=<span class="string">&quot;3.1&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">metadata-complete</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>创建java包</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409190513574.png" class="" title="image-20210409190513574">
+
+<p>要直接点击输入框下方蓝色的java包，java包要是下方蓝色的</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409190914815.png" class=""></li>
+<li><p>创建javaclass继承<code>HttpServlet</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atcrorylove;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">servlet_01</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;进入doGet方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;进入doPost方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409192629350.png" class="" title="image-20210409192629350"></li>
+<li><p>注册web.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servlet_01<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.atcrorylove.servlet_01<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servlet_01<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409192644004.png" class="" title="image-20210409192644004">
+
+<ul>
+<li>在tomcat上跑</li>
+</ul>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409192832339.png" class="" title="image-20210409192832339">
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409193031086.png" class="" title="image-20210409193031086">
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409193240907.png" class="" title="image-20210409193240907">
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409193307939.png" class="" title="image-20210409193307939">
+
+<ul>
+<li><p>出现错误</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409193611406.png" class="" title="image-20210409193611406">
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409193716739.png" class="" title="image-20210409193716739">
+
+<p>看不懂，不过根据经验应该web.xml注册出问题了</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409193843436.png" class="" title="image-20210409193843436">
+
+<p>果然，忘记加<code>/</code>了,正确的是<code>/hello</code></p>
+<p>修改后再运行成功</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409194120782.png" class="" title="image-20210409194120782">在浏览器搜索栏`http://localhost:8080/javaweb_maven01_war/01/`后输入`hello`测试
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409194447495.png" class="" title="image-20210409194447495">
+
+<p>测试成功</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210409194529243.png" class="" title="image-20210409194529243">
+
+<p>servlet入门结束。</p>
+<p>idea可以直接生成的，不过我的版本找不到了 </p>
+<p>贴个链接</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/SammeryD/article/details/108052206?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161796907716780262522955%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=161796907716780262522955&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-3-108052206.first_rank_v2_pc_rank_v29&utm_term=idea%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90servlet">idea快速生成servlet</a></p>
+</li>
+</ul>
+<h1 id="1、servlet原理一图流"><a href="#1、servlet原理一图流" class="headerlink" title="1、servlet原理一图流"></a>1、servlet原理一图流</h1><img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210406123951900.png" class="">
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210408132007892.png" class="" title="image-20210408132007892">
+
+<h1 id="3、servlet的映射原理"><a href="#3、servlet的映射原理" class="headerlink" title="3、servlet的映射原理"></a>3、servlet的映射原理</h1><img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210412193602402.png" class="" title="image-20210412193602402">
+
+<h1 id="4、生命周期"><a href="#4、生命周期" class="headerlink" title="4、生命周期"></a>4、生命周期</h1><img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210412193550925.png" class="" title="image-20210412193550925">
+
+<h1 id="5、使用指南"><a href="#5、使用指南" class="headerlink" title="5、使用指南"></a><em>5、<strong>使用指南</strong></em></h1><img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210412193530477.png" class="" title="image-20210412193530477">
+
+<p><strong>快速生成</strong></p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210412193510032.png" class="" title="image-20210412193510032">
+
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210412193449277.png" class="" title="image-20210412193449277">
+
+<h1 id="6、doGet和doPost"><a href="#6、doGet和doPost" class="headerlink" title="6、doGet和doPost"></a>6、doGet和doPost</h1><img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210412193435830.png" class="" title="image-20210412193435830">
+
+<h1 id="7、ServletConfig"><a href="#7、ServletConfig" class="headerlink" title="7、ServletConfig"></a>7、ServletConfig</h1><img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210412193419363.png" class="" title="image-20210412193419363">
+
+<h1 id="8、其他"><a href="#8、其他" class="headerlink" title="8、其他"></a>8、其他</h1><img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210408215009303.png" class="" title="image-20210408215009303">
+
+<p><strong>转发</strong></p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210412193339024.png" class="" title="image-20210412193339024">
+
+<p>重定项</p>
+<img src="/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/image-20210412193355268.png" class="" title="image-20210412193355268">
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://crorylove.com/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://crorylove.com/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/";
+            const title         = "「Servlet入门」";
+            const excerpt       = `Servlet极简入门[TOC]
+HelloServlet主流配置选择：稳定，使用最广泛
+
+
+必要配置
+以idea 2019.3为例
+第一步 创建工程
+
+创建一个空的project
+
+配置好maven配置
+
+
+
+选择自动导入（依赖还是...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/Servlet/" rel="tag">Servlet</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-04-17</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" Servlet_Config" href="/2021/04/12/2021-04-12-Servlet-Config/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+            <div id="v-comments" class="post-comments"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            new Valine({
+                el: '#v-comments',
+                appId: 'BTiNsgcpGalxClbh4WKUY0up-gzGzoHsz',
+                appKey: 'mFuB5oTAPDnE6xrRsQWG5ULQ',
+                visitor: true,
+                enableQQ: true,
+                path: '/2021/04/12/2021-04-12-Servlet%E5%85%A5%E9%97%A8/'
+            });
+        }
+        if (typeof Valine == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://valine.js.org/">comments powered by Valine.</a></noscript>
+
+        
+    </article>
+</section>
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix">
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar"></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Servlet%E6%9E%81%E7%AE%80%E5%85%A5%E9%97%A8"><span class="toc-text">Servlet极简入门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HelloServlet"><span class="toc-text">HelloServlet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81servlet%E5%8E%9F%E7%90%86%E4%B8%80%E5%9B%BE%E6%B5%81"><span class="toc-text">1、servlet原理一图流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81servlet%E7%9A%84%E6%98%A0%E5%B0%84%E5%8E%9F%E7%90%86"><span class="toc-text">3、servlet的映射原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">4、生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="toc-text">5、使用指南</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6%E3%80%81doGet%E5%92%8CdoPost"><span class="toc-text">6、doGet和doPost</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7%E3%80%81ServletConfig"><span class="toc-text">7、ServletConfig</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8%E3%80%81%E5%85%B6%E4%BB%96"><span class="toc-text">8、其他</span></a></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaWeb/">JavaWeb</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AB%99%E7%82%B9/">站点</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Servlet/" style="font-size: 0.8em;">Servlet</a> <a href="/tags/Tomcat/" style="font-size: 0.6em;">Tomcat</a> <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a> <a href="/tags/maaven/" style="font-size: 0.6em;">maaven</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2021/04/16/%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE/"><i class="fa  fa-book"></i> 站点配置</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/04/12/2021-04-12-maven-idea%E7%89%88%E9%85%8D%E7%BD%AE/"><i class="fa  fa-book"></i> maven_idea版配置</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/04/12/2021-04-12-Tomcat%E7%AE%80%E5%8D%95%E5%85%A5%E6%89%8B/"><i class="fa  fa-book"></i> Tomcat简单入手</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/04/12/2021-04-12-ServletContext/"><i class="fa  fa-book"></i> ServletContext</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/04/12/2021-04-12-Servlet-Config/"><i class="fa  fa-book"></i> Servlet_Config</a>
+            
+          
+        
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        <li><a href="mailto:1191394436@qq.com"><i class="fa fa-envelope"></i></a></li>
+                        
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/crorylove"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 飞翔的城堡 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+						<!--
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Crorylove.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+							-->
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+    <div>
+        <canvas id="snow"></canvas>
+        <script async type="text/javascript" src="/js/snow.min.js"></script>
+    </div>
+
+<script async src="/js/candy.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="tencent"
+        type="playlist"
+        id="7963096569"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
